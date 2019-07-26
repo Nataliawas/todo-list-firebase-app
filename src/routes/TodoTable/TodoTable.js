@@ -12,14 +12,16 @@ class TodoTable extends React.Component {
     tasks: [],
     currentPage: 1,
     pageCount: [],
-    filters: []
+    showDone: true,
+    showTodo: true,
+    showInProgress: true
   }
 
   componentDidMount() {
     db.ref('tasks/').on("value", snapshot => {
       const tasksUnsorted = []
       const tasks = tasksUnsorted.sort((a, b) => a.created - b.created)
-      const filters = []
+
 
       Object.entries(snapshot.val()).forEach(elem => {
 
@@ -30,9 +32,6 @@ class TodoTable extends React.Component {
         }
         tasksUnsorted.push(task)
 
-        if(filters.length !== 0) {
-        console.log('filtrowanie')
-        }
 
         this.setState({ tasks })
 
@@ -42,6 +41,7 @@ class TodoTable extends React.Component {
 
       this.setState({ pageCount })
 
+
     })
   }
 
@@ -49,7 +49,7 @@ class TodoTable extends React.Component {
   renderView = () => {
 
 
-  
+
 
     return (
       <div className="tasks-list">
@@ -81,7 +81,7 @@ class TodoTable extends React.Component {
   }
 
 
-  
+
 
 
   renderPagination = () => {
@@ -102,17 +102,54 @@ class TodoTable extends React.Component {
     this.setState({ currentPage: event.target.id })
   }
 
+
+  handleClick = () => {
+    console.log(this.state.showDone)
+  }
+
+
+  renderCheckbox = () => {
+
+    return (
+      <div>
+        <Checkbox
+          label={"todo"}
+          onChange={this.toggleDone}
+          key={"todo"}
+        />
+        <Checkbox
+          label={"in_progress"}
+          onChange={this.toggleCheckbox}
+          key={"in_progress"}
+        />
+        <Checkbox
+          label={"done"}
+          onChange={this.toggleCheckbox}
+          key={"done"}
+        />
+        <button className="btn btn-default small" type="submit" onClick={this.handleClick()}>Filter</button>
+      </div>
+    )
+  }
+
+  toggleDone = () => {
+    // this.setState({ showDone: !showDone })
+    console.log('changed')
+  }
+
   render() {
 
     return (
       <div className="content">
+        <div>{this.renderCheckbox()}</div>
+        <div>
 
-       
+        </div>
         <Grid columns={2}>
           <Grid.Row>
             <Grid.Column width={9}>
               <div>
-                
+
                 {this.renderView()}
               </div>
               <div>
