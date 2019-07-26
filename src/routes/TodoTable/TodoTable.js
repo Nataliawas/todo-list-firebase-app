@@ -81,23 +81,25 @@ class TodoTable extends React.Component {
   }
 
 
-  setPage = (event) => {
-    this.setState({ currentPage: event.target.id })
-  }
+  
 
 
   renderPagination = () => {
     return (
       <div className="pagination-container"  >
         {this.state.pageCount.map((el) =>
-          <div key={el}>
-            <Segment  className="pagination-element" onClick={this.setPage}>
+          <div >
+            <Segment key={el} id={el} className="pagination-element" onClick={this.setPage}>
               {el}
             </Segment>
           </div>
         )}
       </div>
     )
+  }
+
+  setPage = (event) => {
+    this.setState({ currentPage: event.target.id })
   }
 
   render() {
