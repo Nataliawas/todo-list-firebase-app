@@ -12,9 +12,7 @@ class TodoTable extends React.Component {
     tasks: [],
     currentPage: 1,
     pageCount: [],
-    showDone: true,
-    showTodo: true,
-    showInProgress: true
+
   }
 
   componentDidMount() {
@@ -103,47 +101,13 @@ class TodoTable extends React.Component {
   }
 
 
-  handleClick = () => {
-    console.log(this.state.showDone)
-  }
 
-
-  renderCheckbox = () => {
-
-    return (
-      <div>
-        <Checkbox
-          label={"todo"}
-          onChange={this.toggleDone}
-          key={"todo"}
-        />
-        <Checkbox
-          label={"in_progress"}
-          onChange={this.toggleCheckbox}
-          key={"in_progress"}
-        />
-        <Checkbox
-          label={"done"}
-          onChange={this.toggleCheckbox}
-          key={"done"}
-        />
-        <button className="btn btn-default small" type="submit" onClick={this.handleClick()}>Filter</button>
-      </div>
-    )
-  }
-
-  toggleDone = () => {
-    // this.setState({ showDone: !showDone })
-    console.log('changed')
-  }
 
   render() {
 
     return (
       <div className="content">
-        <div>{this.renderCheckbox()}</div>
         <div>
-
         </div>
         <Grid columns={2}>
           <Grid.Row>

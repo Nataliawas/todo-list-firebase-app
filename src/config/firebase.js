@@ -1,12 +1,13 @@
 const firebase = require('firebase')
 
 const config = {
-    apiKey: "AIzaSyDpGiuPB8AzkDLDmJtMPaWcXLiJ3OwxGpo",
-    authDomain: "todo-list-b01b8.firebaseapp.com",
-    databaseURL: "https://todo-list-b01b8.firebaseio.com",
-    projectId: "todo-list-b01b8",
-    storageBucket: "todo-list-b01b8.appspot.com",
-    messagingSenderId: "281981327349"
+    apiKey: "AIzaSyCPPdHdcSL95IN9rvC2TyXwS07lHGP-MfU",
+    authDomain: "isa-todo-app.firebaseapp.com",
+    databaseURL: "https://isa-todo-app.firebaseio.com",
+    projectId: "isa-todo-app",
+    storageBucket: "",
+    messagingSenderId: "328283698831",
+    appId: "1:328283698831:web:b541b48a7bdf882c"
 }
 
 const app = firebase.initializeApp(config)
